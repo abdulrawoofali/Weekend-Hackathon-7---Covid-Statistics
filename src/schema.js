@@ -7,4 +7,5 @@ const tallySchema = new Schema({
     death: Schema.Types.Number,
 })
 
+
 exports.tallySchema = tallySchema;
