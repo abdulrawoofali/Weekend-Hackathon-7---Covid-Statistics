@@ -12,14 +12,6 @@ app.use(express.json());
 const { connection } = require("./connector");
 
 app.get(`/totalRecovered`, (req, res) => {
-  // let sum =0 ;
-  // connection.find().then(stats => {
-  //     stats.forEach(stat => {
-  //         sum+=stat.recovered;
-  //     });
-  //     res.send({data: {_id: "total", recovered:sum}});
-  // });
-
   connection
     .aggregate([
       {
@@ -72,7 +64,7 @@ app.get(`/totalDeath`, (req, res) => {
     ])
     .exec()
     .then((result) => {
-      (result._doc_id = "total"), res.send({ data: result });
+     res.send({ data: result });
     });
 });
 
@@ -99,7 +91,7 @@ app.get(`/hotspotStates`, (req, res) => {
     ])
     .exec()
     .then((result) => {
-      (result._doc_id = "total"), res.send({ data: result });
+      res.send({ data: result });
     })
     .catch((err) => console.log("sm error....", err));
 });
@@ -121,8 +113,7 @@ app.get(`/healthyStates`, (req, res) => {
       },
     ])
     .exec()
-    .then((result) => {
-      (result._doc_id = "total"), res.send({ data: result });
+    .then((result) => {res.send({ data: result });
     })
     .catch((err) => console.log("sm error....", err));
 });
