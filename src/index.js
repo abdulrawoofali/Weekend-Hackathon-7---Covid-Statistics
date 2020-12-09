@@ -25,7 +25,7 @@ app.get(`/totalRecovered`, (req, res) => {
     ])
     .exec()
     .then((result) => {
-      (result._doc_id = "total"), res.send({ data: result });
+      (result._doc_id = "total"), res.send({ data: result[0] });
     });
 });
 
@@ -45,7 +45,7 @@ app.get(`/totalActive`, (req, res) => {
     ])
     .exec()
     .then((result) => {
-      (result._doc_id = "total"), res.send({ data: result });
+      (result._doc_id = "total"), res.send({ data: result[0] });
     })
     .catch((err) => console.log(err));
 });
@@ -64,7 +64,7 @@ app.get(`/totalDeath`, (req, res) => {
     ])
     .exec()
     .then((result) => {
-     res.send({ data: result });
+     res.send({ data: result[0] });
     });
 });
 
